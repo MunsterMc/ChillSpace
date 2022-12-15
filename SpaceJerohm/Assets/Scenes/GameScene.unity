@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.029759586, g: 0.017998967, b: 0.020030174, a: 1}
+  m_IndirectSpecularColor: {r: 0.029766172, g: 0.018013056, b: 0.020035103, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1176,7 +1176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 56af73695a9f49a48a7c9134ce4f5527, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -200
+      value: -450
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 56af73695a9f49a48a7c9134ce4f5527, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1243,6 +1243,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5750084716789328873, guid: 56af73695a9f49a48a7c9134ce4f5527, type: 3}
+--- !u!114 &365656093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365656090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76dd07070dc5cf343bd82b9e0293330e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &414850775
 GameObject:
   m_ObjectHideFlags: 0
