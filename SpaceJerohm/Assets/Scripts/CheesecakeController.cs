@@ -7,6 +7,8 @@ using UnityEngine.AI;
 
 public class CheesecakeController : MonoBehaviour
 {
+    private bool isWalking = false;
+    Animator animator;
     private Vector3 target;
     private NavMeshAgent nav;
     [SerializeField] private GameObject ballPrefab;
@@ -14,7 +16,19 @@ public class CheesecakeController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         nav = GetComponent<NavMeshAgent>();
+    }
+
+    private void Update()
+    {
+        if ( nav.enabled && isWalking )
+        {
+            if (nav.remainingDistance < 0.5f)
+            {
+                animator.SetBool("walking", false);
+            }
+        }
     }
 
     private void SetNewTarget(GameObject newTarget)
@@ -23,6 +37,7 @@ public class CheesecakeController : MonoBehaviour
         
         transform.LookAt(target);
         nav.SetDestination(target);
+        animator.SetBool("walking", true);
     }
 
     public void fetchBall(GameObject ball)
