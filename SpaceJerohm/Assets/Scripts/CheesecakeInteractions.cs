@@ -1,15 +1,11 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.InputSystem.Android;
 
 public class CheesecakeInteractions : MonoBehaviour
 {
     private IEnumerator _coroutine;
-    private NavMeshAgent nav;
+    private NavMeshAgent _nav;
     [SerializeField] private Transform center;
     [SerializeField] private Transform rotPos1;
     [SerializeField] private Transform rotPos2;
@@ -18,19 +14,19 @@ public class CheesecakeInteractions : MonoBehaviour
 
     private void Start()
     {
-        nav = cheese.GetComponent<NavMeshAgent>();
+        _nav = cheese.GetComponent<NavMeshAgent>();
     }
 
     public void BarrelRoll()
     {
-        _coroutine = Rotate(2f);
+        _coroutine = Rotate(3f);
         StartCoroutine(_coroutine);
     }
     IEnumerator Rotate(float duration) {
         Quaternion startRot = transform.rotation;
         float t = 0.0f;
         Vector3 rotationVector = rotPos1.position - rotPos2.position;
-        nav.enabled = !nav.enabled;
+        _nav.enabled = !_nav.enabled;
         while ( t  < duration )
         {
             t += Time.deltaTime;
@@ -38,7 +34,7 @@ public class CheesecakeInteractions : MonoBehaviour
             yield return null;
         }
         transform.rotation = startRot;
-        nav.enabled = !nav.enabled;
+        _nav.enabled = !_nav.enabled;
     }
 
     public void PlayDead()
@@ -52,7 +48,7 @@ public class CheesecakeInteractions : MonoBehaviour
         Quaternion startRot = transform.rotation;
         float t = 0.0f;
         Vector3 rotationVector = rotPos1.position - rotPos2.position;
-        nav.enabled = !nav.enabled;
+        _nav.enabled = !_nav.enabled;
         transform.root.RotateAround(center.position, rotationVector, 180f);
         while (t < duration)
         {
@@ -61,19 +57,19 @@ public class CheesecakeInteractions : MonoBehaviour
         }
         
         transform.rotation = startRot;
-        nav.enabled = !nav.enabled;
+        _nav.enabled = !_nav.enabled;
     }
 
 
     public void Sleep()
     {
-        _coroutine = goToSleep();
+        _coroutine = GoToSleep();
         StartCoroutine(_coroutine);
     }
 
-    IEnumerator goToSleep()
+    IEnumerator GoToSleep()
     {
-        nav.SetDestination(bed.position);
+        _nav.SetDestination(bed.position);
         yield return null;
     }
 }
