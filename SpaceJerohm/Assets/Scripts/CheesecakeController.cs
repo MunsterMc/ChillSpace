@@ -13,7 +13,6 @@ public class CheesecakeController : MonoBehaviour
     private NavMeshAgent nav;
     [SerializeField] private GameObject ballPrefab;
 
-    // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -36,8 +35,8 @@ public class CheesecakeController : MonoBehaviour
         target = newTarget.transform.position;
         
         transform.LookAt(target);
-        nav.SetDestination(target);
         animator.SetBool("walking", true);
+        nav.SetDestination(target);
     }
 
     public void fetchBall(GameObject ball)
